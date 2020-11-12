@@ -1,9 +1,13 @@
-const express = require('express');
 
+module.exports = router;
+
+const express = require('express');
 const router = express.Router();
-const userController =require('../controllers/user_controller');
+
+const usersConrtoller = require('../controllers/users_controller');
 console.log('router 2222222 loadeddddddddddddddddddddddddddddddd');
 
-router.get('/profile',userController.profile);
+router.get('/profile', usersConrtoller.profile);
+
 
 module.exports = router;
