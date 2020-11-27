@@ -1,6 +1,7 @@
 const express=require('express');
 const app=express();
 const port =8000;
+const db=require('./config/mongoose');
 
 //middleware directing requesst to routes folder
 app.use('/', require('./routes'));
