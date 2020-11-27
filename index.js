@@ -2,6 +2,15 @@ const express=require('express');
 const app=express();
 const port =8000;
 const db=require('./config/mongoose');
+const expressLayouts = require('express-ejs-layouts');
+
+app.use(express.static('./assets'));
+
+app.use(expressLayouts);
+// extract style and scripts from sub pages into the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+
 
 //middleware directing requesst to routes folder
 app.use('/', require('./routes'));

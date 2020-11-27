@@ -7,4 +7,8 @@ console.log('router 2222222 loaded');
 
 router.get('/profile', usersConrtollerr.profilee);
 
+router.get('/signUp', usersConrtollerr.signUp);
+router.get('/signIn', usersConrtollerr.signIn);
+
+
 module.exports = router;
