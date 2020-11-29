@@ -3,7 +3,6 @@ const router = express.Router();
 
 const homeController = require('../controllers/home_controller_action');
 
-console.log('router 1111 loaded');
 
 router.get('/', homeController.home);
 router.use('/users', require('./users'));
