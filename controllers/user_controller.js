@@ -2,9 +2,22 @@ const User = require('../models/user');
 
 
 module.exports.profilee = function (req, res) {
-     return res.render('user_profile', {
-          title: "MernSocial | UserProfile"
-     });
+     if (req.cookies.user_id){
+          User.findById(req.cookies.user_id, function(err, user){
+              if (user){
+                  return res.render('user_profile', {
+                      title: "User Profile",
+                      user: user
+                  })
+              }else{
+                  return res.redirect('/users/signIn');
+  
+              }
+          });
+      }else{
+          return res.redirect('/users/signIn');
+
+      }
 }
 
 module.exports.signUp = function (req, res) {
@@ -14,6 +27,14 @@ module.exports.signUp = function (req, res) {
 }
 
 module.exports.signIn = function (req, res) {
+     return res.render('user_sign_in', {
+          title: "MernSocial | signIn"
+     });
+}
+
+module.exports.signOut = function (req, res) {
+     console.log(     res.cookies
+          );
      return res.render('user_sign_in', {
           title: "MernSocial | signIn"
      });
