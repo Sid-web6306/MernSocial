@@ -4,12 +4,12 @@ const passport = require('passport');
 const usersConrtollerr = require('../controllers/user_controller');
 
 
-router.get('/profile', usersConrtollerr.profilee);
+router.get('/profile',passport.checkAuthentication, usersConrtollerr.profilee);
 
 router.get('/signUp', usersConrtollerr.signUp);
 router.get('/signIn', usersConrtollerr.signIn);
 router.post('/create', usersConrtollerr.create);
-router.get('/signOut', usersConrtollerr.signOut);
+// router.get('/signOut', usersConrtollerr.signOut);
 // router.post('/create-session', usersConrtollerr.createSession);
 
 
@@ -19,4 +19,7 @@ router.post('/create-Session', passport.authenticate(
     'local',
     {failureRedirect: '/users/sign-in'},
 ), usersConrtollerr.createSession);
+
+router.get('/sign-out', usersConrtollerr.destroySession);
+
 module.exports = router;

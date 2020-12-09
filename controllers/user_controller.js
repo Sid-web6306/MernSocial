@@ -2,30 +2,42 @@ const User = require('../models/user');
 
 
 module.exports.profilee = function (req, res) {
-     if (req.cookies.user_id){
-          User.findById(req.cookies.user_id, function(err, user){
-              if (user){
-                  return res.render('user_profile', {
-                      title: "User Profile",
-                      user: user
-                  })
-              }else{
-                  return res.redirect('/users/signIn');
-              }
-          });
-      }else{
-          return res.redirect('/users/signIn');
+     return res.render('user_profile', {
+          title: 'User Profile'
+      })
+     // if (req.cookies.user_id){
+     //      User.findById(req.cookies.user_id, function(err, user){
+     //          if (user){
+     //              return res.render('user_profile', {
+     //                  title: "User Profile",
+     //                  user: user
+     //              })
+     //          }else{
+     //              return res.redirect('/users/signIn');
+     //          }
+     //      });
+     //  }else{
+     //      return res.redirect('/users/signIn');
 
-      }
+     //  }
 }
 
 module.exports.signUp = function (req, res) {
+     if (req.isAuthenticated()){
+          return res.redirect('/users/profile');
+      }
+  
+   
      return res.render('user_sign_up', {
           title: "MernSocial | SignUp"
      });
 }
 
 module.exports.signIn = function (req, res) {
+     if (req.isAuthenticated()){
+          return res.redirect('/users/profile');
+      }
+     
      return res.render('user_sign_in', {
           title: "MernSocial | signIn"
      });
@@ -66,5 +78,11 @@ module.exports.create = function (req, res) {
 
 // sign in and create a session for the user
 module.exports.createSession = function(req, res){
+     return res.redirect('/');
+ }
+
+ module.exports.destroySession = function(req, res){
+     req.logout();
+ 
      return res.redirect('/');
  }
