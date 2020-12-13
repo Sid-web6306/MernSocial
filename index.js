@@ -13,11 +13,11 @@ const sassMiddleware=require('node-sass-middleware');
 
 app.use(
     sassMiddleware({
-        src:'./assets/scss',
-        dest:'./assets/css',
+        src:'../assets/scss',
+        dest:'../assets/cssFile',
         debug:true,
         outputStyle:'expanded',
-        prefix:'/css'
+        prefix:'/cssFile'
     })
 )
 app.use(express.urlencoded());

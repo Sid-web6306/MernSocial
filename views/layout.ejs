@@ -3,13 +3,18 @@
 <head>
     <title><%=title%></title>
     <link rel="stylesheet" href="/cssFile/layout.css">
+    <link rel="stylesheet" href="/cssFile/header.css">
+    <link rel="stylesheet" href="/cssFile/footer.css">
     <%- style%>
 
 </head>
 
 <body>
     <%- include('_header');%>
-    <%- body%>
+    <main id="layout-main">
+        <%- body %>
+
+    </main>
 
     <%- include('_footer');%>
     <%- script%>
