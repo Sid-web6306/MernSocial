@@ -9,10 +9,7 @@ router.get('/profile',passport.checkAuthentication, usersConrtollerr.profilee);
 router.get('/signUp', usersConrtollerr.signUp);
 router.get('/signIn', usersConrtollerr.signIn);
 router.post('/create', usersConrtollerr.create);
-// router.get('/signOut', usersConrtollerr.signOut);
-// router.post('/create-session', usersConrtollerr.createSession);
-
-
+router.get('/sign-out', usersConrtollerr.destroySession);
 
 // use passport as a middleware to authenticate
 router.post('/create-Session', passport.authenticate(
@@ -20,6 +17,8 @@ router.post('/create-Session', passport.authenticate(
     {failureRedirect: '/users/sign-in'},
 ), usersConrtollerr.createSession);
 
-router.get('/sign-out', usersConrtollerr.destroySession);
 
+
+// router.get('/signOut', usersConrtollerr.signOut);
+// router.post('/create-session', usersConrtollerr.createSession);
 module.exports = router;
